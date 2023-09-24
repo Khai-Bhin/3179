@@ -5,6 +5,13 @@
   "title": "World Air Quality Index by City and Coordinates",
   "projection": {"type": "equalEarth"},
   "layer": [
+     {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/ne_110m.json",
@@ -31,9 +38,8 @@
           "field": "count",
           "type": "quantitative",
           "title": "No. of measurements",
-          "scale": {"domain": [1, 17], "range":[10,300]},
+          "scale": {"domain": [1, 17], "range": [10, 300]},
           "bin": {"binned": true, "step": 4}
-          
         },
         "tooltip": [
           {"field": "Country", "type": "nominal", "title": "Country"},
