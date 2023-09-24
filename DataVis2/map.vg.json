@@ -31,7 +31,7 @@
           "field": "count",
           "type": "quantitative",
           "title": "No. of measurements",
-          "scale": {"domain": [1, 16], "range":[30,300]},
+          "scale": {"domain": [1, 17], "range":[10,300]},
           "bin": {"binned": true, "step": 4}
           
         },
