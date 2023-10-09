@@ -1,4 +1,4 @@
-Country,City,AQIValue,AQI.Category,COAQIValue,CO.AQI.Category,OzoneAQIValue,Ozone.AQI.Category,NO2AQIValue,NO2.AQI.Category,PM25AQIValue,PM2.5.AQI.Category,lat,lng,count
+Country,City,AQIValue,AQICategory,COAQIValue,CO.AQI.Category,OzoneAQIValue,Ozone.AQI.Category,NO2AQIValue,NO2.AQI.Category,PM25AQIValue,PM2.5.AQI.Category,lat,lng,count
 Russia,Praskoveya,51,Moderate,1,Good,36,Good,0,Good,51,Moderate,44.7444,44.2031,1
 Brazil,Presidente Dutra,41,Good,1,Good,5,Good,1,Good,41,Good,-11.2958,-41.9869,2
 Italy,Priolo Gargallo,66,Moderate,1,Good,39,Good,2,Good,66,Moderate,37.1667,15.1833,1
