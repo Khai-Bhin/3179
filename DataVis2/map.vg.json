@@ -1,29 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "params": [
-    {
-      "name": "AQIcat",
-      "value": [
-        "Good",
-        "Moderate",
-        "Unhealthy for Sensitive Groups",
-        "Unhealthy",
-        "Very Unhealthy"
-      ],
-      "bind": {
-        "input": "select",
-        "options": [
-          "Notworking",
-          "Good",
-          "Moderate",
-          "Unhealthy for Sensitive Groups",
-          "Unhealthy",
-          "Very Unhealthy"
-        ],
-        "name": "AQI Category "
-      }
-    }
-  ],
   "data": {
     "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
   },
@@ -63,9 +39,7 @@
             "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
           },
           "mark": {"type": "circle", "tooltip": {"content": "data"}},
-          "transform": [
-            {"filter": {"param": "aqifilt"}}
-          ],
+          "transform": [{"filter": {"param": "aqifilt"}}],
           "encoding": {
             "longitude": {"field": "lng", "type": "quantitative"},
             "latitude": {"field": "lat", "type": "quantitative"},
@@ -88,6 +62,59 @@
               "scale": {"scheme": "reds"},
               "bin": true
             }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "text": "Africa",
+            "x": 430,
+            "y": 170,
+            "fontSize": 17
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "text": "North America",
+            "x": 200,
+            "y": 100,
+            "fontSize": 17
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "text": "South America",
+            "x": 250,
+            "y": 230,
+            "fontSize": 17
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "text": "Europe",
+            "x": 550,
+            "y": 60,
+            "fontSize": 17
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "text": "Asia",
+            "x": 590,
+            "y": 120,
+            "fontSize": 17
+          }
+        },{
+          "mark": {
+            "type": "text",
+            "text": "Oceania",
+            "x": 680,
+            "y": 300,
+            "fontSize": 17
           }
         }
       ]
@@ -131,6 +158,7 @@
           "mark": "point",
           "transform": [{"filter": {"param": "aqifilt"}}],
           "encoding": {
+            "tooltip": {"field": "Country"},
             "x": {"field": "AQIValue", "type": "quantitative"},
             "y": {"field": "COAQIValue", "type": "quantitative"},
             "color": {
@@ -148,6 +176,7 @@
           "mark": "point",
           "transform": [{"filter": {"param": "aqifilt"}}],
           "encoding": {
+            "tooltip": {"field": "Country"},
             "x": {"field": "AQIValue", "type": "quantitative"},
             "y": {"field": "OzoneAQIValue", "type": "quantitative"},
             "color": {
@@ -160,10 +189,11 @@
         },
         {
           "width": 253,
-          "description": "Scatterplot 2",
+          "description": "Scatterplot 3",
           "mark": "point",
           "transform": [{"filter": {"param": "aqifilt"}}],
           "encoding": {
+            "tooltip": {"field": "Country"},
             "x": {"field": "AQIValue", "type": "quantitative"},
             "y": {"field": "NO2AQIValue", "type": "quantitative"},
             "color": {
@@ -175,6 +205,146 @@
           }
         }
       ]
+    },
+    {
+      "hconcat": [
+        {
+          "description": "A donut chart with AQI category counts.",
+          "width": 250,
+          "mark": {"type": "arc", "innerRadius": 50},
+          "title": "AQI Category Distribution",
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "count", "field": "AQICategory", "as": "count"}
+              ],
+              "groupby": ["AQICategory"]
+            },
+            {
+              "calculate": "format(datum.count / 14229 * 100, '.1f')",
+              "as": "countPercentage"
+            }
+          ],
+          "encoding": {
+            "theta": {"field": "count", "type": "quantitative"},
+            "color": {
+              "field": "AQICategory",
+              "type": "nominal",
+              "title": "Category"
+            },
+            "tooltip": [
+              {
+                "field": "AQICategory",
+                "type": "nominal",
+                "title": "Category: "
+              },
+              {
+                "field": "countPercentage",
+                "type": "quantitative",
+                "title": "Percentage"
+              }
+            ]
+          }
+        },
+        {
+          "description": "A donut chart with AQI category counts.",
+          "width": 250,
+          "mark": {"type": "arc", "innerRadius": 50},
+          "title": "PM2.5 Category Distribution",
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "count", "field": "PM25AQICategory", "as": "count"}
+              ],
+              "groupby": ["PM25AQICategory"]
+            },
+            {
+              "calculate": "format(datum.count / 14229 * 100, '.1f')",
+              "as": "countPercentage"
+            }
+          ],
+          "encoding": {
+            "theta": {"field": "count", "type": "quantitative"},
+            "color": {
+              "field": "PM25AQICategory",
+              "type": "nominal",
+              "title": "Category"
+            },
+            "tooltip": [
+              {
+                "field": "PM25AQICategory",
+                "type": "nominal",
+                "title": "Category: "
+              },
+              {
+                "field": "countPercentage",
+                "type": "quantitative",
+                "title": "Percentage"
+              }
+            ]
+          }
+        },
+        {
+          "description": "A donut chart with AQI category counts.",
+          "width": 250,
+          "mark": {"type": "arc", "innerRadius": 50},
+          "title": "Ozone Category Distribution",
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "count", "field": "OzoneAQICategory", "as": "count"}
+              ],
+              "groupby": ["OzoneAQICategory"]
+            },
+            {
+              "calculate": "format(datum.count / 14229 * 100, '.1f')",
+              "as": "countPercentage"
+            }
+          ],
+          "encoding": {
+            "theta": {"field": "count", "type": "quantitative"},
+            "color": {
+              "field": "OzoneAQICategory",
+              "type": "nominal",
+              "title": "Category"
+            },
+            "tooltip": [
+              {
+                "field": "OzoneAQICategory",
+                "type": "nominal",
+                "title": "Category: "
+              },
+              {
+                "field": "countPercentage",
+                "type": "quantitative",
+                "title": "Percentage"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "repeat": {"layer": ["AQIValue", "PM25AQIValue"]},
+      "spec": {
+        "width": 500,
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "AQICategory",
+            "type": "nominal",
+            "axis": {"labelAngle": 0, "labelLimit": 100}
+          },
+          "y": {
+            "aggregate": "average",
+            "field": {"repeat": "layer"},
+            "type": "quantitative",
+            "title": "Avg AQI"
+          },
+          "color": {"datum": {"repeat": "layer"}, "title": ""},
+          "xOffset": {"datum": {"repeat": "layer"}}
+        }
+      }
     }
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 14}}
