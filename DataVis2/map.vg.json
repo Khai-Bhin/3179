@@ -48,7 +48,7 @@
               "type": "quantitative",
               "title": "No. of measurements",
               "scale": {"domain": [1, 17], "range": [10, 300]},
-              "bin": {"binned": true, "step": 4}
+              "bin": {"step": 4}
             },
             "tooltip": [
               {"field": "Country", "type": "nominal", "title": "Country"},
