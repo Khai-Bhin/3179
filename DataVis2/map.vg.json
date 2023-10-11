@@ -47,13 +47,14 @@
               "field": "count",
               "type": "quantitative",
               "title": "No. of measurements",
-              "scale": {"domain": [1, 17], "range": [10, 300]},
-              "bin": {"step": 4}
+              "scale": {"domain": [0, 17], "range": [10, 300]},
+              "bin": {"binned": true, "step": 4}
             },
             "tooltip": [
               {"field": "Country", "type": "nominal", "title": "Country"},
               {"field": "City", "type": "nominal", "title": "City"},
               {"field": "AQIValue", "type": "quantitative", "title": "AQIValue"}
+
             ],
             "color": {
               "field": "AQIValue",
