@@ -54,7 +54,6 @@
               {"field": "Country", "type": "nominal", "title": "Country"},
               {"field": "City", "type": "nominal", "title": "City"},
               {"field": "AQIValue", "type": "quantitative", "title": "AQIValue"}
-
             ],
             "color": {
               "field": "AQIValue",
@@ -109,7 +108,8 @@
             "y": 120,
             "fontSize": 17
           }
-        },{
+        },
+        {
           "mark": {
             "type": "text",
             "text": "Oceania",
@@ -140,7 +140,7 @@
           "type": "quantitative",
           "axis": {"tickCount": 4, "grid": false},
           "scale": {"domain": [1, 450]},
-          "title": "Count"
+          "title": " Total count"
         },
         "color": {
           "field": "AQIValue",
@@ -324,28 +324,6 @@
           }
         }
       ]
-    },
-    {
-      "repeat": {"layer": ["AQIValue", "PM25AQIValue"]},
-      "spec": {
-        "width": 500,
-        "mark": "bar",
-        "encoding": {
-          "x": {
-            "field": "AQICategory",
-            "type": "nominal",
-            "axis": {"labelAngle": 0, "labelLimit": 100}
-          },
-          "y": {
-            "aggregate": "average",
-            "field": {"repeat": "layer"},
-            "type": "quantitative",
-            "title": "Avg AQI"
-          },
-          "color": {"datum": {"repeat": "layer"}, "title": ""},
-          "xOffset": {"datum": {"repeat": "layer"}}
-        }
-      }
     }
   ],
   "config": {"title": {"font": "sans-serif", "fontSize": 14}}
