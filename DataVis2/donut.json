@@ -1,0 +1,116 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
+    },
+    "hconcat": [
+      {
+        "description": "A donut chart with AQI category counts.",
+        "width": 250,
+        "mark": { "type": "arc", "innerRadius": 50 },
+        "title": "AQI Category Distribution",
+        "transform": [
+          {
+            "aggregate": [{ "op": "count", "field": "AQICategory", "as": "count" }],
+            "groupby": ["AQICategory"]
+          },
+          {
+            "calculate": "datum.count / 14229 * 100",
+            "as": "countPercentage"
+          }
+        ],
+        "encoding": {
+          "theta": { "field": "count", "type": "quantitative" },
+          "color": {
+            "field": "AQICategory",
+            "type": "nominal",
+            "title": "Category"
+          },
+          "tooltip": [
+            {
+              "field": "AQICategory",
+              "type": "nominal",
+              "title": "Category: "
+            },
+            {
+              "field": "countPercentage",
+              "type": "quantitative",
+              "title": "Percentage"
+            }
+          ]
+        }
+      },
+      {
+        "description": "A donut chart with AQI category counts.",
+        "width": 250,
+        "mark": { "type": "arc", "innerRadius": 50 },
+        "title": "PM2.5 Category Distribution",
+        "transform": [
+          {
+            "aggregate": [{ "op": "count", "field": "PM25AQICategory", "as": "count" }],
+            "groupby": ["PM25AQICategory"]
+          },
+          {
+            "calculate": "datum.count / 14229 * 100",
+            "as": "countPercentage"
+          }
+        ],
+        "encoding": {
+          "theta": { "field": "count", "type": "quantitative" },
+          "color": {
+            "field": "PM25AQICategory",
+            "type": "nominal",
+            "title": "Category"
+          },
+          "tooltip": [
+            {
+              "field": "PM25AQICategory",
+              "type": "nominal",
+              "title": "Category: "
+            },
+            {
+              "field": "countPercentage",
+              "type": "quantitative",
+              "title": "Percentage"
+            }
+          ]
+        }
+      },
+      {
+        "description": "A donut chart with AQI category counts.",
+        "width": 250,
+        "mark": { "type": "arc", "innerRadius": 50 },
+        "title": "Ozone Category Distribution",
+        "transform": [
+          {
+            "aggregate": [{ "op": "count", "field": "OzoneAQICategory", "as": "count" }],
+            "groupby": ["OzoneAQICategory"]
+          },
+          {
+            "calculate": "datum.count / 14229 * 100",
+            "as": "countPercentage"
+          }
+        ],
+        "encoding": {
+          "theta": { "field": "count", "type": "quantitative" },
+          "color": {
+            "field": "OzoneAQICategory",
+            "type": "nominal",
+            "title": "Category"
+          },
+          "tooltip": [
+            {
+              "field": "OzoneAQICategory",
+              "type": "nominal",
+              "title": "Category: "
+            },
+            {
+              "field": "countPercentage",
+              "type": "quantitative",
+              "title": "Percentage"
+            }
+          ]
+        }
+      }
+    ]
+  }
