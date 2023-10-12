@@ -14,6 +14,7 @@
 <body>
 
     <div id="map"></div>
+    <div id="bar"></div>
 
     <script type="text/javascript">
         var data_location = "AQItransformed.csv"
@@ -25,7 +26,7 @@
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        vegaEmbed('#map', spec3).then(function(result) {
+        vegaEmbed('#bar', spec3).then(function(result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>
