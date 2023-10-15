@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
+  },
+  "background": "#f1e5e5",
+  "layer": [
+    {
+      "mark": "bar",
+      "transform": [
+        {
+          "aggregate": [{"op": "mean", "field": "AQIValue", "as": "avg"}],
+          "groupby": ["Country"]
+        },
+        {
+          "window": [{"op": "row_number", "as": "rank"}],
+          "sort": [{"field": "avg", "order": "ascending"}]
+        },
+        {
+          "calculate": "datum.rank < 10 ? datum.Country : 'All Others'",
+          "as": "ranked_country"
+        },
+        {"filter": "datum.ranked_country !== 'All Others'"}
+      ],
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "avg",
+          "type": "quantitative",
+          "title": null,
+          "sort": "descending",
+          "scale": {"domain": [0, 30]}
+        },
+        "y": {
+          "sort": {"op": "mean", "field": "avg", "order": "ascending"},
+          "field": "ranked_country",
+          "type": "ordinal",
+          "title": null,
+          "axis": {"orient": "right"}
+        },
+        "tooltip": [{"field": "avg", "type": "quantitative", "title": "Avg AQI", "format": ".2f"}],
+        "color": {"value": "lightblue"}
+      }
+    },
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "text": ["↗"],
+        "dx": -25,
+        "dy": -75,
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "text": ["Palau (16.0)"],
+        "dx": -50,
+        "dy": -55,
+        "fontStyle": "bold"
+      }
+    }
+  ]
+}

@@ -1,8 +1,61 @@
 #map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
+
+	left: 20px;
 	right: 100px;
+	height: 850px;
 	/*height: 1000px;
 	width: 800px;*/
 }
+
+#bar {
+	top: 30px;
+	height:300px;
+	width: 580px;
+}
+
+#donut{
+
+	left: 10px;
+}
+
+#high{
+	height: 260px;
+	top: 28px;
+}
+
+#low{
+	top: 28px;
+	left: 10px;
+}
+
+p{
+	font-family: "source-sans-pro", sans-serif;
+}
+  
+.page {
+    width: 1000px;
+    background-color: #f1e5e5;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.title {
+	background-color: #f08383;
+	margin: auto;
+}
+
+.border {
+    width: 100%;
+    border: 1px solid black;
+}
+
+h4 {
+	font-family: "source-sans-pro", sans-serif;
+    color: rgb(212, 211, 211);
+}
+
+h1{
+	font-family: "source-sans-pro", sans-serif;
+	font-weight: bold;
+}
+

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
+  },
+  "background": "#f1e5e5",
+  "layer": [
+    {
+      "mark": "bar",
+      "transform": [
+        {
+          "aggregate": [{"op": "mean", "field": "AQIValue", "as": "avg"}],
+          "groupby": ["Country"]
+        },
+        {
+          "window": [{"op": "row_number", "as": "rank"}],
+          "sort": [{"field": "avg", "order": "descending"}]
+        },
+        {
+          "calculate": "datum.rank < 10 ? datum.Country : 'All Others'",
+          "as": "ranked_country"
+        },
+        {
+          "filter": "datum.ranked_country !== 'All Others'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "avg",
+          "type": "quantitative",
+          "title": null
+        },
+        "y": {
+          "sort": {"op": "mean", "field": "avg", "order": "descending"},
+          "field": "ranked_country",
+          "type": "ordinal",
+          "title": null
+        },
+        "tooltip": [{"field": "avg", "type": "quantitative", "title": "Avg AQI", "format": ".2f"}],
+        "color": {"value": "#C70039"}
+      }
+    },
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "text": ["↑"],
+        "fontSize":15,
+        "dx": 25,
+        "dy": -55,
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "text",
+        "text": ["South Korea (421.0)"],
+        "dx": 35,
+        "dy": -25,
+        "fontStyle": "bold"
+      }
+    }
+  ]
+}

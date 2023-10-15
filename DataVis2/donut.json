@@ -3,6 +3,7 @@
     "data": {
       "url": "https://raw.githubusercontent.com/Khai-Bhin/3179/main/DataVis2/AQItransformed.csv"
     },
+    "background": "#f1e5e5",
     "hconcat": [
       {
         "description": "A donut chart with AQI category counts.",
@@ -30,12 +31,13 @@
             {
               "field": "AQICategory",
               "type": "nominal",
-              "title": "Category: "
+              "title": "Category"
             },
             {
               "field": "countPercentage",
               "type": "quantitative",
-              "title": "Percentage"
+              "title": "Percentage",
+              "format": ".2f"
             }
           ]
         }
@@ -66,12 +68,13 @@
             {
               "field": "PM25AQICategory",
               "type": "nominal",
-              "title": "Category: "
+              "title": "Category"
             },
             {
               "field": "countPercentage",
               "type": "quantitative",
-              "title": "Percentage"
+              "title": "Percentage",
+              "format": ".2f"
             }
           ]
         }
@@ -102,15 +105,20 @@
             {
               "field": "OzoneAQICategory",
               "type": "nominal",
-              "title": "Category: "
+              "title": "Category"
             },
             {
               "field": "countPercentage",
               "type": "quantitative",
-              "title": "Percentage"
+              "title": "Percentage",
+              "format": ".2f"
             }
           ]
         }
       }
-    ]
+    ],"config": {
+      "legend": {
+        "orient": "left" 
+      }
+    }
   }
